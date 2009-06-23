@@ -162,9 +162,6 @@ class MainPage(webapp.RequestHandler):
 		self.get()
 
 def main():
-	path = os.path.join(os.path.dirname(__file__), os.path.dirname('..'))
-	path = os.path.join(path, os.path.dirname('html'))
-	path = os.path.join(path, 'top.html')
 	application = webapp.WSGIApplication([('/', MainPage), ('/start', StartAYA), ('/agile', Agile),
 										('/past', Past)], debug=False)
 	wsgiref.handlers.CGIHandler().run(application)

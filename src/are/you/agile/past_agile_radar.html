@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="ja" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Are you Agile ?</title>
+<link rel="stylesheet" href="./css/style.css"/>
+<!--[if IE]><script type="text/javascript" src="./js/excanvas-compressed.js"></script><![endif]-->
+<script type="text/javascript" src="./js/radar.js"></script>
+<script type="text/javascript">
+// レーダーチャートを作成します
+window.onload = function() {
+  var rc = new html5jp.graph.radar('agile_radar');
+  if(!rc) { return; }
+  var tr = document.getElementById('result').getElementsByTagName('tr');
+  var radar = new Array(tr.length);
+  for (var i=0; i<tr.length; i++) {
+    var td = tr[i].getElementsByTagName('td');
+    radar[i] = new Array(td.length);
+    radar[i][0] = td[0].innerHTML;
+	for (var j=1; j<td.length; j++) {
+      radar[i][j] = parseInt(td[j].lastChild.innerHTML);
+	}
+  }
+
+  var params = {
+	aCap: ["えること", "協力すること", "リリースすること", "計画すること", "使開発すること"],
+    aMax: 100,
+  	aMin: 0,
+  	aLinePositions: [25, 50, 75, 100]
+  }
+  rc.draw(radar, params);
+}
+</script>
+</head>
+
+<body style="padding: 20px;">
+<i><h1>過去の診断結果</h1></i>
+<p><span id="your_name">{{name}}</span> さん</p>
+
+<h2>過去のアジャイルレーダー </h2>
+<div style="padding-left: 20px;">
+<div><canvas width="600" height="350" id="agile_radar"></canvas></div>
+</div>
+
+
+<h2>過去のアジャイル度詳細</h2>
+<div style="padding-left: 20px;">
+<table width="800px">
+	<thead><tr class="header"><td width="50px">日付</td>
+		<td width="150px">考えること</td>
+		<td width="150px">協力すること</td>
+		<td width="150px">リリースすること</td>
+		<td width="150px">計画すること</td>
+		<td width="150px">開発すること</td>
+	</tr></thead>
+	<tbody id="result">
+	{% for c in list %}
+	<tr><td class="note">{{c.time}}</td><td class="point"><span style="border-left: solid {{c.p_thinking}}px red;"/> {{c.p_thinking}}</td>
+		<td class="point"><span style="border-left: solid {{c.p_cooperation}}px red;"/> {{c.p_cooperation}}</td>
+		<td class="point"><span style="border-left: solid {{c.p_release}}px red;"/> {{c.p_release}}</td>
+		<td class="point"><span style="border-left: solid {{c.p_planing}}px red;"/> {{c.p_planing}}</td>
+		<td class="point"><span style="border-left: solid {{c.p_development}}px red;"/> {{c.p_development}}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+</div>
+
+
+<br />
+
+<a href="/">トップへ</a>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="ja" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Are you Agile ?</title>
+<link rel="stylesheet" href="./css/style.css"/>
+<!--[if IE]><script type="text/javascript" src="./js/excanvas-compressed.js"></script><![endif]-->
+<script type="text/javascript" src="./js/radar.js"></script>
+<script type="text/javascript">
+// レーダーチャートを作成します
+window.onload = function() {
+  var rc = new html5jp.graph.radar('agile_radar');
+  if(!rc) { return; }
+  var rs = document.getElementById('result').getElementsByTagName('tr');
+  var caption = new Array(rs.length);
+  var radar = new Array(rs.length + 1);
+  radar[0] = document.getElementById('your_name').innerHTML;
+  for (var i=0; i<rs.length; i++) {
+	var point = rs[i].childNodes[1].lastChild.innerHTML;
+	radar[i+1] = parseInt(point);
+	caption[i] = rs[i].childNodes[0].innerHTML + '(' + point + ')';
+  }
+
+  var params = {
+    aCap: caption,
+    aMax: 100,
+  	aMin: 0,
+  	aLinePositions: [25, 50, 75, 100]
+  }
+  rc.draw([radar], params);
+}
+</script>
+</head>
+
+<body style="padding: 20px;">
+<i><h1>Your Agile Degree is ... ～ 診断結果 ～ </h1></i>
+{{message}}
+<h2><span id="your_name">{{name}}</span> さんのアジャイルレーダー</h2>
+<div style="padding-left: 20px;">
+<div><canvas width="600" height="350" id="agile_radar"></canvas></div>
+</div>
+
+
+<h2><span id="your_name">{{name}}</span> さんのアジャイル度詳細</h2>
+<div style="padding-left: 20px;">
+<table width="600px">
+	<thead><tr class="header"><td width="200px">カテゴリ</td><td width="150px">得点</td><td width="250px">コメント</td></tr></thead>
+	<tbody id="result">
+	{% for c in categories %}
+	<tr><td class="note">{{c.category_name}}</td><td class="point"><span style="border-left: solid {{c.point}}px red;"/> {{c.point}}</td><td>{{c.comment}}</td></tr>
+	{% endfor %}
+	</tbody>
+</table>
+<p>コメントの内容は以下のように判断しています。</p>
+<ul style="padding-left: 30px; font-size: small;">
+	<li>75点以下：　すぐに改善が必要だ（赤信号）</li>
+	<li>76～96点：　改善が必要だ（黄信号）</li>
+	<li>97,98,99点：　できれば改善しよう（緑信号）</li>
+	<li>100点：　これ以上の改善すべき点はない</li>
+</ul>
+</div>
+
+<br />
+
+<a href="/">トップへ</a>
+</body>
+</html>

@@ -1,0 +1,120 @@
+body {
+	background-color: #efefef;
+	width: 659px;
+	padding: 20px;
+}
+
+p {
+	font-size: small;
+	line-height: 120%;
+	vertical-align: bottom;
+	text-indent: 1em;
+	padding: 5px;
+}
+
+h1 {
+	border-left: 10px solid gray;
+	width: 639px;
+	border-bottom: 2px solid gray;
+	padding-left: 10px;
+	margin: 10px 0px;
+}
+
+h2 {
+	border-left: 10px solid gray;
+	width: 629px;
+	border-bottom: 2px solid gray;
+	padding-left: 10px;
+	margin: 10px 0px;
+	margin-left: 10px;
+}
+
+.layout {
+	border:		0px solid white;
+}
+
+table {
+	padding:	2px;
+	font-size:	small;
+	border:		1px solid gray;
+}
+
+tr td {
+	border:		1px solid gray;
+}
+
+td.question {
+	vertical-align: top;
+	width:		300px;
+	padding:	5px;
+	font-size:	small;
+}
+
+td.choice {
+	width:		40px;
+	text-align: center;
+}
+
+td.note {
+	text-align: left;
+	vertical-align: top;
+	padding: 	5px;
+}
+
+td.point {
+	text-align: left;
+	vertical-align: top;
+	padding: 	5px;
+}
+
+tr.header {
+	border:		0px;
+	background-color: gray;
+	color:		white;
+	font-weight:bold;
+	text-align:	center;
+}
+
+input.button {
+	width:		80px;
+	font-size:	small;
+	margin: 10px;
+}
+
+* {
+	padding: 	0px;
+	margin: 	0px;	
+}
+
+#accordion {
+	width:		659px;
+	margin:		50px auto;
+}
+
+.accordion {
+	width:		639px;
+	font:		12px Verdana,Arial;
+	color:		#033;
+}
+
+.accordion dt {
+	width:		619px;
+	border:		2px solid #9ac1c9;
+	padding:	8px;
+	font-weight:bold;
+	margin-top:	5px;
+	cursor:		pointer;
+}
+
+.accordion dd {
+	overflow:	hidden;
+	background:	#fff;
+}
+
+.accordion span {
+	display:	block;
+	width:		605px;
+	border:		2px solid #9ac1c9;
+	border-top:	none;
+	padding:	15px;
+}

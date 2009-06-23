@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Are You Agile ? ～ あなたのアジャイル度診断します ～ </title>
+<link rel="stylesheet" href="./css/style.css" type="text/css"/>
+<script type="text/javascript" src="./js/accordion.js"></script>
+</head>
+
+<body>
+
+<i><h1>Questions （アジャイル度診断）</h1></i>
+<p>{{name}}さん</p>
+<div><p>Googleアカウントでログインした状態で、診断すれば結果を自動的に診断結果を保存します。</p>
+<p>ログインしないままだと、診断結果は保存されません。</p>
+<a href="{{login}}"><p>Googleアカウントでログインする</p></a></div>
+
+<h2>はじめに</h2>
+<p>以下の質問に「はい/いいえ」で回答し、「診断」ボタンをクリックするとあなたのアジャイル度がレーダーチャートで表示されます。</p>
+<p>「▼～」をクリックすると該当カテゴリの質問が展開されます。</p>
+<p>質問に答えない（ラジオボタンがチェックされない）場合には、その質問で得られる得点が0点で計算されます。</p>
+
+<h2>質問</h2>
+<form action="/agile" method="post" style="padding-left: 20px;">
+<input type="hidden" value="{{name}}" name="your_name"/>
+
+<dl class="accordion" id="slider">
+{% for c in categories %}
+	<dt>▼{{c.category_name}}</dt>
+	<dd>
+	<span>
+		<table>
+		<tr class="header"><td>質問</td><td>はい</td><td>いいえ</td><td>XPプラクティス</td></tr>
+		{% for q in c.questions %}
+			<tr><td class="question">{{q.question}}</td>
+				<td class="choice"><input type="radio" name="{{q.q_no}}" value="yes"/></td>
+				<td class="choice"><input type="radio" name="{{q.q_no}}" value="no"/></td>
+				<td class="note">{{q.note}}</td></tr>
+		{% endfor %}
+		</table>
+	</span>
+	</dd>
+{% endfor %}
+</dl>
+<input type="submit" value="診断" class="button" />
+</form>
+
+<br />
+
+<a href="/">トップへ</a>
+</body>
+</html>
+
+<script type="text/javascript">
+//<!--
+var acc = new accordion.slider("acc");
+acc.init("slider");
+//-->
+</script>

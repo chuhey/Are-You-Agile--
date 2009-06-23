@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Are You Agile ? ～ あなたのアジャイル度診断します ～ </title>
+<link rel="stylesheet" href="./css/style.css" type="text/css"/>
+<script type="text/javascript" src="./js/accordion.js"></script>
+</head>
+
+<body>
+
+<i><h1>Are You Agile ? ～ アジャイル度診断 ～ </h1></i>
+<p>ようこそ<span>{{usr}}</span>さん</p>
+<div><p><a href="{{login}}">Googleアカウントでログインする</a></p></div>
+
+<h2>お知らせ</h2>
+<div style="margin-left: 20px;">
+<textarea rows="7" cols="75" readonly="readonly" style="font-size: small;">
+[2009/03/13(Fri)]
+・Googleアカウントに対応
+・Googleアカウントでログインすると過去の履歴が参照できるように
+
+[2009/03/09(Mon)]
+・得点の合計が最高で99点になるように修正（著者の意図的なことらしい）
+
+[2009/03/08(Sun)]
+・「お知らせ」追加
+・不具合対応：IEで診断の質問が表示されない不具合を解消。
+・画面レイアウト等変更。
+</textarea>
+</div>
+
+<br />
+
+<h2>アジャイル度診断</h2>
+<p>「アート・オブ・アジャイル　デベロップメント　- 組織を成功に導くエクストリームプログラミング -」
+（James Shore, Shane Warden 著、木下史彦, 平鍋健児 監修、笹井崇司 訳）のアジャイル度診断アプリです。</p>
+<br />
+<p>下のテキストボックスに名前を入力して「診断スタート」ボタンをクリックしてください。</p>
+<p>アジャイル度診断がスタートします。</p>
+<form action="/start" method="post">
+	<div style="padding-left: 30px; vertical-align: middle;">
+		<span style="padding: 8px; font: 12px Verdana,Arial; color: #033; font-weight: bold; border: 2px solid #9ac1c9;">名前
+		<input type="text" size="50" maxlength="50" value="{{usr}}" name="your_name" onclick="this.focus(); this.select();"/></span>
+		<input type="submit" value="診断スタート" class="button" />
+		<p><a href="/past" >過去の履歴はこちら</a></p>
+	</div>
+</form>
+<br />
+
+<h2>連絡先</h2>
+<p>リクエスト等あれば気軽に連絡ください。メールでもいいし、ブログのコメントでも大歓迎です。</p>
+<ul style="padding: 10px; padding-left: 30px;">
+	<li>livedoor blog: <a href="http://blog.livedoor.jp/chuhei1107/">Everyday FunkiEE!!</a></li>
+	<li>mail to me: <img style="vertical-align: middle;" src="./img/mailaddress.png"/></li>
+</ul>
+
+<br />
+
+<h2>今後の方向性</h2>
+<p>あくまで予定ではありますが、頑張って取り入れていきたいです。</p>
+<ul style="padding: 10px; padding-left: 30px;">
+	<li><s>国際化対応（英語化）</s>→海外で同じサイトがあるので<a href="http://www.abetterteam.org/" target="_blank">そちら</a>へどうぞ</li>
+	<li><s>Googleアカウント対応</s>（対応済み）</li>
+	<li><s>統計情報表示</s>（対応済み）</li>
+	<li>平均アジャイル度の表示</li>
+	</li>
+</ul>
+
+<br />
+
+<h2>謝辞</h2>
+<ul style="padding: 10px; padding-left: 30px;">
+	<li><a href="http://code.google.com/intl/ja/appengine/">
+		<img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" alt="Powered by Google App Engine"/>
+	</a></li>
+	<li><span style="font-style: italic; font-size: small;">
+		<a href="http://www.html5.jp/library/graph_radar.html">レーダーチャートJavascriptライブラリ</a>
+		[<a href="http://www.html5.jp/">HTML5.JP</a>]
+	</span></li>
+	<li><span style="font-style: italic; font-size: small;">
+		<a href="http://jamesshore.com/">James Shore</a>, Shane Warden『<a href="http://www.amazon.co.jp/%E3%82%A2%E3%83%BC%E3%83%88%E3%83%BB%E3%82%AA%E3%83%96%E3%83%BB%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%A4%E3%83%AB-%E3%83%87%E3%83%99%E3%83%AD%E3%83%83%E3%83%97%E3%83%A1%E3%83%B3%E3%83%88-%E2%80%95%E7%B5%84%E7%B9%94%E3%82%92%E6%88%90%E5%8A%9F%E3%81%AB%E5%B0%8E%E3%81%8F%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%A0%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0-James-Shore/dp/4873113954">The Art of Agile Development</a>』(Copyright 2007 O'Reilly Media, Inc., 978-0-596-52767-9)
+	</span></li>
+</ul>
+
+</body>
+</html>
